@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    li form { display: inline-block; }
+  </style>
+  <body>
+    <h1>BookmarksApp</h1>
+
+    <ul>
+      <%- bookmarks.each do |b| -%>
+        <li>
+          <a href="<%= b.url%>"><%= b.url %></a>
+          -
+          <form action="/b/<%= b.id %>/destroy" method="POST">
+            <button type="submit">remove</button>
+          </form>
+        </li>
+      <%- end -%>
+      <li>
+        <form action="/b" method="POST">
+          <input type="text" name="url" />
+          <button type="submit">add</button>
+        </form>
+      </li>
+    </ul>
+
+  </body>
+</html>
